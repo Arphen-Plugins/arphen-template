@@ -11,7 +11,6 @@ import pt.dmms.arphenheart.database.Database;
 import pt.dmms.arphenheart.database.HikariDatabase;
 import pt.dmms.arphenheart.database.SQLite;
 import pt.dmms.arphenheart.factory.ConfigFactory;
-import pt.dmms.arphenheart.util.InventoryUtil;
 import pt.dmms.arphenheart.util.SoundsUtil;
 import pt.dmms.arphenheart.util.TitleUtil;
 import pt.dmms.arphenheart.util.message.ColorUtil;
@@ -25,11 +24,14 @@ public class ArphenTemplate extends JavaPlugin {
 
     private Database database;
     private ConfigFactory langConfigFactory, soundsConfigFactory, titleConfigFactory;
+    private MessageUtil messageUtil;
+    private SoundsUtil soundsUtil;
+    private TitleUtil titleUtil;
 
     @Override
     public void onEnable() {
         loadConfig();
-        loadUtil(false);
+        loadUtil();
         loadDatabase();
         loadHook();
         loadRepository();
@@ -54,13 +56,10 @@ public class ArphenTemplate extends JavaPlugin {
         new ConfigFactory(this, "info.yml");
     }
 
-    private void loadUtil(boolean reload) {
-        MessageUtil.config(langConfigFactory.getConfig());
-        SoundsUtil.config = soundsConfigFactory.getConfig();
-        TitleUtil.config = titleConfigFactory.getConfig();
-        if (!reload) {
-            InventoryUtil.load(this);
-        }
+    private void loadUtil() {
+        soundsUtil = new SoundsUtil(soundsConfigFactory.getConfig());
+        titleUtil = new TitleUtil(titleConfigFactory.getConfig());
+        messageUtil = new MessageUtil(langConfigFactory.getConfig(), soundsUtil, titleUtil);
     }
 
     private void loadDatabase() {
@@ -116,7 +115,7 @@ public class ArphenTemplate extends JavaPlugin {
         for (ConfigFactory configFactory : configFactories) {
             configFactory.reload();
         }
-        loadUtil(true);
+        loadUtil();
         sender.sendMessage(ColorUtil.apply("<green>Config reloaded!"));
     }
 

@@ -19,7 +19,7 @@ dependencies {
     paperweightDevelopmentBundle("io.papermc.paper:dev-bundle:1.20.1-R0.1-SNAPSHOT")
     compileOnly('org.projectlombok:lombok:1.18.24',)
     implementation(
-            'com.github.Arphen-Plugins:arphen-heart:v1.0.1',
+            'com.github.Arphen-Plugins:arphen-heart:v1.0.3',
             'com.zaxxer:HikariCP:5.0.1',
             'co.aikar:acf-paper:0.5.1-SNAPSHOT',
             'org.xerial:sqlite-jdbc:3.42.0.0'
