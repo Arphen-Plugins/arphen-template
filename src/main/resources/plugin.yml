@@ -3,4 +3,6 @@ main: pt.dmms.arphentemplate.ArphenTemplate
 version: 1.0
 author: dmms
 api-version: '1.20'
-website: 'https://github.com/m0rais/'
+website: 'https://github.com/Arphen-Plugins/'
+depend:
+  - arphen-heart
