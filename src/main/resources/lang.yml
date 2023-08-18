@@ -1,0 +1,5 @@
+play-sound: true #If the path is the same it will send the sound (Create sounds for each message)
+play-title: true #If the path is the same it will send the title (Create title for each message)
+
+player-not-found:
+  - "<red>Player not found!"

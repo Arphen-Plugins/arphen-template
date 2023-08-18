@@ -1,0 +1,34 @@
+plugins {
+    id 'java'
+    id 'com.github.johnrengelman.shadow' version "7.1.1"
+    id 'io.papermc.paperweight.userdev' version "1.5.5-SNAPSHOT"
+}
+
+group 'pt.dmms'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+    maven { url = "https://repo.aikar.co/content/groups/aikar/" }
+    maven {
+        url 'https://jitpack.io'
+    }
+}
+
+dependencies {
+    paperweightDevelopmentBundle("io.papermc.paper:dev-bundle:1.20.1-R0.1-SNAPSHOT")
+    compileOnly('org.projectlombok:lombok:1.18.24',)
+    implementation(
+            'com.github.Arphen-Plugins:arphen-heart:v1.0.1',
+            'com.zaxxer:HikariCP:5.0.1',
+            'co.aikar:acf-paper:0.5.1-SNAPSHOT',
+            'org.xerial:sqlite-jdbc:3.42.0.0'
+    )
+    annotationProcessor 'org.projectlombok:lombok:1.18.24'
+}
+
+compileJava.options.encoding = 'UTF-8'
+
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = 'UTF-8'
+}

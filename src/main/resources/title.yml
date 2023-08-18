@@ -1,0 +1,3 @@
+player-not-found:
+  line-0: "<red>Player not found"
+  line-1: "<white>Couldn't find '%player%'"

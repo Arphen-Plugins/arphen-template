@@ -1,0 +1,5 @@
+sound-options:
+  volume: 1
+  pitch: 1
+
+player-not-found: "BLOCK_ANVIL_BREAK"
